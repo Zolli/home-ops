@@ -33,10 +33,7 @@ spec:
         - name: OP_HTTP_PORT
           value: "8080"
         - name: OP_SESSION
-          valueFrom:
-            secretKeyRef:
-              name: onepassword-credentials
-              key: 1password-credentials.json
+          value: /home/opuser/.op/credentials/1password-credentials.json
         resources:
           requests:
             cpu: 50m
@@ -71,6 +68,9 @@ spec:
         volumeMounts:
         - name: shared-data
           mountPath: /home/opuser/.op/data
+        - name: credentials
+          mountPath: /home/opuser/.op/credentials
+          readOnly: true
 
       # Connect Sync - Syncs with 1Password service
       - name: connect-sync
@@ -87,10 +87,7 @@ spec:
         - name: OP_HTTP_PORT
           value: "8081"
         - name: OP_SESSION
-          valueFrom:
-            secretKeyRef:
-              name: onepassword-credentials
-              key: 1password-credentials.json
+          value: /home/opuser/.op/credentials/1password-credentials.json
         resources:
           requests:
             cpu: 50m
@@ -125,7 +122,16 @@ spec:
         volumeMounts:
         - name: shared-data
           mountPath: /home/opuser/.op/data
+        - name: credentials
+          mountPath: /home/opuser/.op/credentials
+          readOnly: true
 
       volumes:
       - name: shared-data
         emptyDir: {}
+      - name: credentials
+        secret:
+          secretName: onepassword-credentials
+          items:
+            - key: 1password-credentials.json
+              path: 1password-credentials.json
