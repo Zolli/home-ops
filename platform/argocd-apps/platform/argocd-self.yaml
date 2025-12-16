@@ -11,7 +11,7 @@ spec:
 
   source:
     repoURL: https://github.com/Zolli/home-ops.git
-    targetRevision: main
+    targetRevision: master
     path: platform/argocd
 
   destination:
