@@ -10,7 +10,7 @@ metadata:
     bgp.cilium.io/advertise-service: default
   annotations:
     # Optional: request specific IP from pool (comment out for automatic allocation)
-    # io.cilium/lb-ipam-ips: "172.20.10.21"
+    io.cilium/lb-ipam-ips: "172.20.10.21"
 spec:
   type: LoadBalancer
   selector:
