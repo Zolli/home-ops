@@ -46,7 +46,8 @@ spec:
                     - "*.cluster.zolli-home.hu"
           traefik:
             port: 9000
-            expose: false
+            expose:
+              default: false
             protocol: TCP
         ingressRoute:
           dashboard:
