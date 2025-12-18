@@ -12,7 +12,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/zolli07/home-ops.git
+    repoURL: https://github.com/Zolli/home-ops.git
     path: platform/apps/demo-app
     targetRevision: master
 
