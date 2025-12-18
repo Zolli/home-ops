@@ -1,0 +1,30 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-cluster-zolli-home-hu
+  namespace: cert-manager
+  annotations:
+    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "traefik"
+    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+    reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "traefik"
+spec:
+  secretName: wildcard-cluster-zolli-home-hu-tls
+  duration: 2160h    # 90 days
+  renewBefore: 360h  # 15 days before expiry
+  subject:
+    organizations:
+      - zolli-home
+  commonName: "*.cluster.zolli-home.hu"
+  dnsNames:
+    - "*.cluster.zolli-home.hu"
+    - "cluster.zolli-home.hu"
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+    group: cert-manager.io
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
