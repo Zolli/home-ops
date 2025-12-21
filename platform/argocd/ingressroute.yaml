@@ -1,0 +1,28 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd-server
+  namespace: argocd
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    # gRPC route for ArgoCD CLI (higher priority)
+    - kind: Rule
+      match: Host(`cd.cluster.zolli-home.hu`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argocd-server
+          port: 80
+          scheme: h2c
+    # Main HTTPS route for ArgoCD UI
+    - kind: Rule
+      match: Host(`cd.cluster.zolli-home.hu`)
+      priority: 10
+      services:
+        - name: argocd-server
+          port: 80
+          scheme: http
+  tls:
+    secretName: wildcard-cluster-zolli-home-hu-tls

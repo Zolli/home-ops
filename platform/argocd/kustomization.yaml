@@ -5,13 +5,9 @@ namespace: argocd
 
 resources:
   - argocd-server-service.yaml
-  - ingress.yaml
+  - ingressroute.yaml
 
 patches:
-  - path: argocd-cm-patch.yaml
-    target:
-      kind: ConfigMap
-      name: argocd-cm
   - path: argocd-cmd-params-cm-patch.yaml
     target:
       kind: ConfigMap
