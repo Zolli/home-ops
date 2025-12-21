@@ -5,7 +5,7 @@ namespace: argocd
 
 resources:
   - argocd-server-service.yaml
-  - ingressroute.yaml
+  - ingress.yaml
 
 patches:
   - path: argocd-cm-patch.yaml
