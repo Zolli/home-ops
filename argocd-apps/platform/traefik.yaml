@@ -18,7 +18,7 @@ spec:
       helm:
         valueFiles:
           - $values/platform/traefik/values.yaml
-    - repoUrl: https://github.com/Zolli/home-ops.git
+    - repoURL: https://github.com/Zolli/home-ops.git
       targetRevision: master
       ref: values
 
