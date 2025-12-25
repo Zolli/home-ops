@@ -13,7 +13,7 @@ spec:
 
   source:
     repoURL: https://github.com/Zolli/home-ops.git
-    path: platform/apps/demo-app
+    path: apps/demo-app
     targetRevision: master
 
   destination:
