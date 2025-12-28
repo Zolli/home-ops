@@ -1,0 +1,34 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: Percona MySQL Operator
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+spec:
+  project: default
+
+  sources:
+    - repoURL: https://percona.github.io/percona-helm-charts
+      chart: percona/ps-operator
+      targetRevision: 1.0.0
+      helm:
+        valueFiles:
+          - $values/platform/percona-mysql-operator/values.yaml
+    - repoURL: https://github.com/Zolli/home-ops.git
+      targetRevision: master
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: percona-mysql
+
+  syncPolicy:
+    automated:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

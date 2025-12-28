@@ -1,0 +1,4 @@
+env:
+  logStructured: true
+disableTelemetry: true
+watchAllNamespaces: true
