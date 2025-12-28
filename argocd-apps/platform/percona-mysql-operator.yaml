@@ -27,8 +27,7 @@ spec:
     namespace: percona-mysql
 
   syncPolicy:
-    automated:
-      enabled: true
+    automated: {}
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
