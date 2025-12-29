@@ -20,6 +20,6 @@ spec:
     encoding: PKCS1
     size: 4096
   issuerRef:
-    name: internal-ca
+    name: internal-ca-selfsigned
     kind: ClusterIssuer
     group: cert-manager.io
