@@ -25,14 +25,6 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
-        trust:
-          namespace: cert-manager
-          securityContext:
-            seccompProfileEnabled: true
-        webhook:
-          tls:
-            approverPolicy:
-              enabled: false
 
   destination:
     server: https://kubernetes.default.svc
