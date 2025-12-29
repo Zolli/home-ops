@@ -9,5 +9,5 @@ resources:
   - clusterissuer-staging.yaml
   - clusterissuer-production.yaml
   - certificate-wildcard.yaml
-  - clusterissuer-internal-ca.yaml
   - certificate-internal-ca-root.yaml
+  - clusterissuer-internal-ca.yaml
