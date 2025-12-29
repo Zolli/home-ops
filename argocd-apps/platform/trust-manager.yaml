@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: https://charts.jetstack.io
     chart: trust-manager
-    targetRevision: v0.14.1
+    targetRevision: v0.20.3
     helm:
       valuesObject:
         replicaCount: 1
