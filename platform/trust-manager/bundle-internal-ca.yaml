@@ -1,0 +1,14 @@
+---
+apiVersion: trust.cert-manager.io/v1alpha1
+kind: Bundle
+metadata:
+  name: internal-ca-bundle
+  namespace: cert-manager
+spec:
+  sources:
+    - secret:
+        name: internal-ca-root-secret
+        key: tls.crt
+  target:
+    configMap:
+      key: internal-ca.crt

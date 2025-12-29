@@ -1,0 +1,25 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: internal-ca-root
+  namespace: cert-manager
+spec:
+  isCA: true
+  commonName: Zolli Homelab Internal Root CA
+  secretName: internal-ca-root-secret
+  duration: 87600h    # 10 years
+  renewBefore: 720h   # 30 days
+  subject:
+    organizations:
+      - zolli-home
+    organizationalUnits:
+      - homelab
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 4096
+  issuerRef:
+    name: internal-ca
+    kind: ClusterIssuer
+    group: cert-manager.io
