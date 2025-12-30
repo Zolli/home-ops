@@ -5,3 +5,4 @@ namespace: kube-system
 
 resources:
   - ingressroute.yaml
+  - serviceaccount-token.yaml
