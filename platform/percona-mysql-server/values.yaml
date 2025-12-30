@@ -1,0 +1,5 @@
+tls:
+  issuerConf:
+    name: internal-ca
+    kind: ClusterIssuer
+    group: cert-manager.io
