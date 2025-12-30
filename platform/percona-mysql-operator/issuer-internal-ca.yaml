@@ -1,0 +1,9 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: internal-ca
+  namespace: percona-mysql
+spec:
+  ca:
+    secretName: internal-ca-root-secret

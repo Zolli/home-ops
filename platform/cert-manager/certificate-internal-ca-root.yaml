@@ -4,6 +4,11 @@ kind: Certificate
 metadata:
   name: internal-ca-root
   namespace: cert-manager
+  annotations:
+    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "percona-mysql"
+    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+    reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "percona-mysql"
 spec:
   isCA: true
   commonName: Zolli Homelab Internal Root CA
@@ -19,6 +24,12 @@ spec:
     algorithm: RSA
     encoding: PKCS1
     size: 4096
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "percona-mysql"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "percona-mysql"
   issuerRef:
     name: internal-ca-selfsigned
     kind: ClusterIssuer
